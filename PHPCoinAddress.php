@@ -13,15 +13,27 @@ Version 0.2.0.pre
 
 ****************************************************************************
 Example Usage:
+<?php
 
-require_once 'PHPCoinAddress.php';
-// CoinAddress::set_debug(true);      // optional - show debugging messages
-// CoinAddress::set_reuse_keys(true); // optional - use same key for all addresses
-$coin = CoinAddress::bitcoin();  
-print 'public (base58): ' . $coin['public'] . "\n";
-print 'public (Hex)   : ' . $coin['public_hex'] . "\n";
-print 'private (WIF)  : ' . $coin['private'] . "\n";
-print 'private (Hex)  : ' . $coin['private_hex'] . "\n"; 
+require_once ("PHPCoinAddress.php");
+$start = time();
+$nn = 0;
+while($nn < 3)
+{
+	$coin = CoinAddress::bitcoin();
+	$public = $coin['public'];
+	$private = $coin['private'];
+	$end = time();	
+	$process = $end - $start;
+	echo $public."<br>".$private."<br>".$process."<br><br>";
+		
+	$nn++;
+
+}
+
+
+
+?> 
 
 ****************************************************************************
 Notes:
